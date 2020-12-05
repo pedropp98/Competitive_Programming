@@ -39,6 +39,8 @@ def mergesort(array, begin, end):
 
 def main():
     seat_id = list()
+
+    # --- Part one --- #
     for line in stdin:
         rows = [0, 127]
         column = [0, 7]
@@ -49,7 +51,6 @@ def main():
                 rows[0] = int(((rows[0] + rows[1]) / 2) + 1)
 
         for i in range(3):
-
             if(line[i+7] == "L"):
                 column[1] = int((column[0] + column[1]) / 2)
             else:
@@ -58,11 +59,12 @@ def main():
         seat_id.append((rows[0] * 8) + column[0])
 
     mergesort(seat_id, 0, len(seat_id)-1)
-    print(seat_id)
+    print(f"Part one: {seat_id}")
 
+    # --- Part two --- #
     for i in range(len(seat_id)-1):
         if(seat_id[i] != seat_id[i+1]-1):
-            print(seat_id[i]+1)
+            print(f"Part two: {seat_id[i]+1}")
             break
 
 if __name__ == "__main__":
