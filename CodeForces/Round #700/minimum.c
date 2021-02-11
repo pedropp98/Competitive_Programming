@@ -6,10 +6,10 @@
 #define false 0
 #define true 1
 
-int request_value(int);
-int n;
+int request_value(int, int);
 
 int main(void){
+    int n;
     scanf("%d", &n);
     int left_range = 1, right_range = n;
     int *array = (int*)calloc((n+2), sizeof(int));
@@ -17,9 +17,9 @@ int main(void){
  
     while(left_range < right_range){
         int middle = (int) ((right_range+left_range) / 2);
-        if(request_value(middle))
+        if(request_value(middle, n))
             scanf("%d", &array[middle]);
-        if(request_value(middle+1))
+        if(request_value(middle+1, n))
             scanf("%d", &array[middle+1]);
         if(array[middle] < array[middle+1])
             right_range = middle;
@@ -33,7 +33,7 @@ int main(void){
     return 0;
 }
 
-int request_value(int index){
+int request_value(int index, int n){
     if(index >= 1 and index <= n){
         printf("? %d\n", index);
         fflush(stdout);
